@@ -1,0 +1,57 @@
+﻿@model Login_Lan1.ViewModel.EditRoleViewModel
+@{
+    ViewBag.Title = "Edit Role";
+}
+<h3> Role managment &gt; @ViewBag.Title</h3>
+<form asp-controller="Role" asp-action="Edit" method="post" class="mt-2">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input hidden asp-for="RoleId" />
+    <div class="row form-group">
+        <div class="col-sm-2">
+            <label asp-for="RoleName"></label>
+        </div>
+        <div class="col-sm-10">
+            <input asp-for="RoleName" class="form-control" />
+            <span asp-validation-for="RoleName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteRoleModal">
+               Delete
+            </button>
+            <a asp-controller="Role" asp-action="Index" class="btn btn-warning">Back</a>
+        </div>
+    </div>
+</form>
+<!-- Button to Open the Modal -->
+
+
+<!-- The Modal -->
+<div class="modal" id="deleteRoleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+           
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Confirm delete role</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    bạn có muốn xóa
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <a asp-controller="Role" asp-action="Delete" asp-route-id="@Model.RoleId" class="btn btn-danger">Yes</a>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                </div>
+           
+            
+
+        </div>
+    </div>
+</div>
